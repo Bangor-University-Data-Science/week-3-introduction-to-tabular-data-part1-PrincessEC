@@ -1,4 +1,8 @@
+import pandas as pd
+
+
 def create_summary_table(df):
+
     """
     Creates a summary DataFrame with feature name, data type, number of unique values, and if it has missing values.
     
@@ -10,13 +14,11 @@ def create_summary_table(df):
     """
      # Implement the logic here
     
-    summary ={}
+    summary = {
+        "Feature Name": df.columns,
+        "Data Type":[df[col].dtype for col in df.columns],
+        "Unique Values": [df[col].nunique() for col in df.columns],
+        "Missing Values": [df[col].isnull().any() for col in df.columns]
+    }
 
-    for column in df.columns:
-        summary[column] = {
-            "Data Type": df[column].dtype,
-            "Unique Values": df[column].nunique(),
-            "Missing Values": df[column].isnull().any()
-        }
-    return summary
-       
+    return pd.DataFrame(summary)
