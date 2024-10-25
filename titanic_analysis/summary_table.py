@@ -19,4 +19,4 @@ def create_summary_table(df):
     })  
     
     
-    return summary
+    return pd.DataFrame(summary)
