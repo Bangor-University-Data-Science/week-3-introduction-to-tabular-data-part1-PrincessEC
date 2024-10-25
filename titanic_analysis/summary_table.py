@@ -10,10 +10,10 @@ def create_summary_table(df):
     """
      # Implement the logic here
     
-    summary_dict = {"Feature Name": df.column.to-list(),
+    summary_dict = {"Feature Name": df.column.to_list(),
                  "Data Type": df.dtypes.values,
-                 "Has missing Values": df.isna().summary().values,
-                "Number of Unique Values": df.nunique().values
+                 "Has missing Values?": df.isna().summary().values,
+                 "Number of Unique Values": df.nunique().values
                  }
     summary_df = pd.DataFrame(summary_dict)
     return summary_df
