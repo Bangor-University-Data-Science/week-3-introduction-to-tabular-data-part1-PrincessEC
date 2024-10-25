@@ -1,6 +1,5 @@
 import pandas as pd
 
-
 def create_summary_table(df):
 
     """
@@ -17,8 +16,8 @@ def create_summary_table(df):
     summary = {
         "Feature Name": df.columns,
         "Data Type":[df[col].dtype for col in df.columns],
-        "Unique Values": [df[col].nunique() for col in df.columns],
-        "Missing Values": [df[col].isnull().any() for col in df.columns]
+        "Unique Values": [int(df[col].nunique()) for col in df.columns],
+        "Missing Values": [bool(df[col].isnull().any()) for col in df.columns]
     }
 
-    return pd.DataFrame(summary)
+    return pd.DataFrame(summary, columns=["Feature Name", "Data Type", "unique Values", "Missing Values"])
