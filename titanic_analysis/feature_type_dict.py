@@ -8,6 +8,7 @@ def create_feature_type_dict(df):
     Returns:
         dict: A dictionary classifying features into numerical and categorical types.
     """
+    
     feature_types = {
         'numerical': {
             'continuous': [],  # Fill with continuous numerical features

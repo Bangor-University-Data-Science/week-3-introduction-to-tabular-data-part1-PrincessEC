@@ -8,4 +8,15 @@ def create_summary_table(df):
     Returns:
         pd.DataFrame: A summary DataFrame.
     """
-    pass  # Implement the logic here
+     # Implement the logic here
+    
+    summary = pd.DataFrame({
+        "Feature Name": df.colunms,
+        "Data Type": df.dtypes.values,
+        "Unique Values": df.unique().values,
+        "Has Missing Values": df.isnull().any().values
+
+    })  
+    
+    
+    return summary
