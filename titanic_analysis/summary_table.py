@@ -13,11 +13,11 @@ def create_summary_table(df):
     """
      # Implement the logic here
     
-    summary = {
-        "Feature Name": df.columns.tolist(),
-        "Data Type":[df[col].dtype for col in df.columns.tolist()],
-        "Unique Values": [df[col].nunique() for col in df.columns.tolist()],
-        "Missing Values": [df[col].isnull().any() for col in df.columns.tolist()]
-    }
-
-    return pd.DataFrame(summary, columns=["Feature Name", "Data Type", "unique Values", "Missing Values"])
+    sum_dict ={"Feature Name":df.columns.to_list(),
+               "Data Type":df.dtypes.values,
+               "Has Missing Values?":df.isna().sum().values,
+               "Number of Unique Values":df.nunique().values
+               }
+    
+    sum_df = pd.DataFrame(sum_dict)
+    return sum_df
