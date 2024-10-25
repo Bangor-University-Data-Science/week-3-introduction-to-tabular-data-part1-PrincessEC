@@ -10,13 +10,18 @@ def create_summary_table(df):
     """
      # Implement the logic here
     
-    summary = pd.DataFrame({
-        "Feature Name": df.colunms,
-        "Data Type": df.dtypes.values,
-        "Unique Values": df.unique().values,
-        "Has Missing Values": df.isnull().any().values
+    summary = {
+        "Feature Name": [],
+        "Data Type": [],
+        "Unique Values": [],
+        "Missing Values": []
 
-    })  
+    }
+    for column in df.columns:
+        summary["Feature Name"].append(column)
+        summary["Data Type"].append(df[column].dtype)
+        summary["Unique Values"].append(df[column].nunique())
+        summary["Missing Values"].append(df[column].isnull().any())
     
     
     return pd.DataFrame(summary)
